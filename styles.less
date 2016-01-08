@@ -1,0 +1,336 @@
+body,ul,p,li,a{margin:0px;padding:0px;}
+@gradient-light: -webkit-linear-gradient(#718291, #617588);
+@gradient-dark: -webkit-linear-gradient(#0b131e, #232931);
+a{
+	color:white;
+	width:100%;
+	display:block;
+	height:100%;
+}
+.gradient(@startColor, @endColor){
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+@nightColorStart: #141830;
+@nightColorEnd: #262c43;
+@nightColorTextAndLines: #8d8f9a;
+
+@nightCloudyColorStart: #0b131e;
+@nightCloudyColorEnd: #232931;
+@nightCloudyColorTextAndLines: #8b8f92;
+
+@dayColorStart: #2f76a1;
+@dayColorEnd: #549dc5;
+@dayColorTextAndLines: #a1c8df;
+
+@dayCloudyColorStart: #718291;
+@dayCloudyColorEnd: #617588;
+@dayCloudyColorTextAndLines: #b6c0c9;
+body {
+  
+    margin: 0;
+    padding: 0;
+    min-height: 700px;
+  
+    font-family: 'HelveticaNeue-Light', Helvetica, Arial, Sans-Serif;
+    color: white;
+    background: #555;
+
+    a {
+     color: white; 
+     text-decoration: none;
+    }
+  
+    h1, h2, h3, h4 {
+      font-weight: normal;
+      margin: 0px;
+    }
+  
+    h1 {
+      font-size: 80px;
+      font-family: 'HelveticaNeue-UltraLight', Helvetica, Arial, Sans-Serif;
+    }
+  
+    li {
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      -webkit-padding-start: 0px;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+    }
+	color:white;
+	background-color:#555;
+	font-family:"HelveticaNeue-Light", Arial, Helvetica;
+	font-size:16px;
+	&.is-night{
+		.gradient(@nightColorStart, @nightColorEnd);
+		&.is-cloudy {
+			.gradient(@nightCloudyColorStart, @nightCloudyColorStart);
+		}
+	}
+
+	&.is-day {
+	 	.gradient(@dayColorStart, @dayColorEnd);
+	 	&.is-cloudy {
+			.gradient(@dayCloudyColorStart, @dayCloudyColorEnd);
+		}
+	}
+
+	.cities-list {
+		.is-day{
+			.gradient(@dayColorStart, @dayColorEnd);
+		}
+		.is-night{
+			.gradient(@nightColorStart, @nightColorEnd);
+		}
+	}
+}
+
+.city{
+	.city-header{
+		height:166px;
+		text-align:center;
+	}
+	.city-name{
+			font-size: 24px;
+			line-height: 24px;
+			padding-top:23px;
+	}
+	.report{
+		font-size: 16px;
+		line-height: 16px;
+		padding-top: 9px;
+	}
+	.temperature{
+		font-family:"HelveticaNeue-UltraLight";
+		font-size: 80px;
+		line-height: 80px;
+		padding-top:15px;
+	}
+	
+}
+.city-navigation{
+	width: 100%;
+	border-bottom: 1px solid #b6c0c9;
+	padding-left: 10px;
+	padding-right: 10px;
+	ul{
+		height: 25px;
+	}
+	ul li{
+		float:left;
+		height: 25px;
+		text-align: left;
+		width: 25%;
+		&.yest-temp{
+			text-align:right; 
+		}
+		&.now-temp{
+			text-align:right; 
+		}
+	}
+}
+.today-temp {
+	font-size: 13px;
+	border-bottom: 1px solid #b6c0c9;
+	width:100%;
+	overflow: scroll;
+	table{
+		padding-left: 10px;
+		padding-bottom: 14px;
+		.today-time{
+			line-height: 13px;
+			padding-top: 10px;
+			padding-right: 32px;
+			padding-bottom:18px;
+			th{
+				font-weight: normal;
+				padding-right:32px;
+				&:last{
+					padding-right:0px;
+				}
+			}
+		}
+		.today-img{
+			padding-right: 10px;
+			.weather-img{
+				height: 17px;
+				padding-right: 30px;
+				width: 19px;
+				&:last{
+					padding-right: 0px;
+				}
+			}
+		}
+		.today-time-temp{
+			padding-right: 46px;
+			padding-top: 15px;
+			line-height: 13px;
+			&:last{
+				padding-right: 0px;
+			}
+		}
+	}
+	
+}
+.week-days{
+	padding-top: 17px;
+	border-bottom: 1px solid #b6c0c9;
+	padding-bottom: 16px;
+	table{
+		width:100%;
+		padding-left: 10px;
+		padding-right: 10px;
+		tr{
+			padding-bottom: 13px;
+			td{
+				width: 25%;
+				text-align: right;
+				img{
+					height: 17px;
+					width: 19px;
+				}
+				&:first-child{
+					text-align: left;
+				}
+			}
+			&:last{
+				padding-bottom: 0px;
+			}
+		}
+	}
+}
+.summary{
+	padding-top:12px;
+	padding-bottom:12px;
+	padding-left:10px;
+	padding-right:12px;
+	border-bottom: 1px solid #b6c0c9;
+}
+.highlights{
+	text-align: center;
+	padding-bottom:42px;
+	padding-top:11px;
+	border-bottom: 1px solid #b6c0c9;
+	table{
+		margin: 0 auto;
+		tr{
+			padding-bottom: 7px;
+			height: 16px;
+			td{
+			 	  padding-right: 10px;
+				  line-height: 16px;
+				  padding-top: 0px;
+				  padding-bottom: 0px;
+			}
+			&:nth-child(2n+2){
+				padding-bottom:28px;
+			}
+			&:last{
+				padding-bottom:0px;
+			}
+		}
+	}
+	
+}
+.city-list {
+	float:left;
+	padding:21px 16px 19px 16px;
+	span{font-size:15px;
+		 line-height:15px;}
+	p{font-size:30px;line-height:30px;}
+}
+.temp {
+	float:right;
+	font-size:65px;
+	line-height:65px;
+	margin:0;
+	padding:8px 16px;
+	font-family:"HelveticaNeue-UltraLight";
+}
+
+li {
+	display:block;
+	height:84px;
+	overflow:hidden;
+	list-style-type:none;
+}
+.cities {
+	height:84px;
+	list-style-type:none;
+}
+
+nav {
+  position: fixed;
+  height: 42px;
+  left:0px;
+  bottom: 0px;
+  right:0px;
+  &.sydney {
+    background: @gradient-dark;
+  }
+
+  &.sanjose {
+  	border-top:1px solid #b6c0c9;
+    background: @gradient-light;
+  }
+  
+  div {
+    position: absolute;
+    font-size: 25px;
+    height: 42px;
+
+   &.disabled {
+    opacity: 0.5;
+   }
+      
+   &.next-prev-nav {
+     width: 120px;
+     left: 50%;
+     margin-left: -60px;
+     padding-top:10px;
+     opacity: 0.9;
+
+     div {
+       font-size: 14px;
+      }
+      
+     .prev-button {
+        left: 0px;
+        width: 20px;
+      }
+      .indicator-dots {
+        left: 30px;
+        right: 30px;
+        text-align: center;
+        
+        span {
+          opacity: 0.5;
+          &.current {
+            opacity: 1;
+          }
+        }
+      }
+      
+      .next-button {
+         right: 0px;
+         width: 20px;
+         text-align: right;
+       }
+     }
+   
+     &.list-button {
+       right:0px;
+       width: 30px;
+     }
+  }
+}
